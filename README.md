@@ -4,26 +4,39 @@ Hammal 是运行于 cloudflare workers 上的 Docker 镜像加速工具，用于
 
 ### 食用方式
 
-首先安装 wrangler 命令行工具 https://developers.cloudflare.com/workers/cli-wrangler/install-update
-
+首先安装 [wrangler 命令行工具](https://developers.cloudflare.com/workers/get-started/guide/), 并登录
+```bash
+npm install -g wrangler
+yarn global add wrangler
+wrangler login
+```
+克隆项目
 ```
 git clone https://github.com/tomwei7/hammal.git
 cd hammal
 mv wrangler.toml.sample wrangler.toml
-
-# 获取 account_id id
+```
+获取 account_id id, 并修改 wrangler.toml 文件 account_id id
+```
 wrangler whoami
-
-# 创建 KV namespace
-wrangler kv:namespace create hammal_cache
-
 ```
 
-修改 wrangler.toml 文件填充 account_id 与 kv_namespaces 中的 id
+
+创建 KV namespace
+```bash
+wrangler kv:namespace create hammal_cache
+```
+修改 wrangler.toml 文件填充 kv_namespaces 中的 id，并加上两行
+```
+main = "src/index.ts"
+compatibility_date = "2022-10-29"
+```
 
 ```toml
 name = "hammal"
 type = "webpack"
+main = "src/index.ts"
+compatibility_date = "2022-10-29"
 account_id = "your account_id"
 workers_dev = true
 route = ""
