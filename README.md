@@ -7,7 +7,6 @@ Hammal 是运行于 cloudflare workers 上的 Docker 镜像加速工具，用于
 首先安装 [wrangler 命令行工具](https://developers.cloudflare.com/workers/get-started/guide/), 并登录
 ```bash
 npm install -g wrangler
-yarn global add wrangler
 wrangler login
 ```
 克隆项目
