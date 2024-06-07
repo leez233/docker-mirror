@@ -49,11 +49,11 @@ kv_namespaces = [
 发布 workers
 
 ```
-wrangler publish
+wrangler deploy
 ```
 
 发布 workers 可以获得类似 https://hammal.{your_name}.workers.dev  的地址，修改 registry-mirrors 地址为该地址即可
-
+强烈建议前往workers-设置-触发器中绑定自己的域名官方workers.dev访问效果不佳
 ```
 <<EOF sudo tee /etc/docker/daemon.json
 {
